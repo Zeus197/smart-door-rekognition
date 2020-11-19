@@ -32,9 +32,9 @@ NetID: tsah20, ruc197, it732, slk522
 1. Visitor Vault
     - a. Create a S3 bucket (B1) to store the photos of the visitors.
     - b. Create a DynamoDB table “passcodes” (DB1) that stores temporary access codes to your virtual door and a reference to the visitor it was assigned to.
-        -i. Use the TTL feature of DynamoDB to expire the records after 5 -1 minutes.
+     - i. Use the TTL feature of DynamoDB to expire the records after 5 -1 minutes.
     - c. Create a DynamoDB table “visitors” (DB2) that stores details about the visitors that your Smart Door system is interacting with.
-        -i. Index each visitor by the FaceId detected by Amazon Rekognition2 (more in the next section), alongside the name of the visitor and their phone number.            When storing a new face, if the FaceId returned by Rekognition already exists in the database, append the new photo to the existing photos array.
+     - i. Index each visitor by the FaceId detected by Amazon Rekognition2 (more in the next section), alongside the name of the visitor and their phone number.            When storing a new face, if the FaceId returned by Rekognition already exists in the database, append the new photo to the existing photos array.
            Use the following schema for the JSON object:
               
               {
@@ -55,8 +55,8 @@ NetID: tsah20, ruc197, it732, slk522
             }
 2. Analyze
       - a. Create a Kinesis Video Stream (KVS1), that will be used to capture and 3 stream video for analysis.
-            i. Download the KVS Producer SDK GStreamer plugin4
-                 ● We recommend you use the Docker image to run it, if you’re not comfortable with compiling the library yourself.
+            i. Download the KVS Producer SDK GStreamer plugin
+                i. We recommend you use the Docker image to run it, if you’re not comfortable with compiling the library yourself.
             ii. Get an IP camera or simulate one on your device to create an  RTSP video stream.
             iii. Run one of the GStreamer commands outlined in the GStreamer documentation to stream your RSTP source to Kinesis Video Streams.
       - b. Subscribe Rekognition Video to the Kinesis Video Stream (KVS1). 
@@ -66,14 +66,14 @@ NetID: tsah20, ruc197, it732, slk522
             A known face entails a face detected by Rekognition, whose FaceId can be found in the “visitors” DynamoDB table (DB1).
       - e. For every unknown face detected by Rekogniton, send an SMS to th “owner” (i.e. yourself or a team member) a photo of the visitor. The text 9
         message should also include a link to approve access for the visitor.
-        i. If clicked, the link should take you to a simple web page (WP1) that collects the name and phone number of the visitor via a web form.
-        ● Submitting this form should create a new record in the “visitors” table (DB2), indexed by the FaceId identified by
-        Rekognition. Note that you will have to build your own API to send information from the form to the backend. Its design
-        and implementation is left up to you.
-        ● Generate a OTP as in step (d) above and store it in the “passcodes” table (DB1), with a 5 minute expiration timestamp.
-        ● Send the visitor an SMS message to the phone number on file. The text message should include the OTP.
+       - i. If clicked, the link should take you to a simple web page (WP1) that collects the name and phone number of the visitor via a web form.
+            i. Submitting this form should create a new record in the “visitors” table (DB2), indexed by the FaceId identified by
+                Rekognition. Note that you will have to build your own API to send information from the form to the backend. Its design
+                and implementation is left up to you.
+       - ii. Generate a OTP as in step (d) above and store it in the “passcodes” table (DB1), with a 5 minute expiration timestamp.
+       - iii. Send the visitor an SMS message to the phone number on file. The text message should include the OTP.
 3. Authorize
     - a. Create a second web page (WP2), the “virtual door”, that prompts the user to input the OTP.
-      i. If the OTP is valid, greet the user by name and present a success message.
-      ii. If the OTP is invalid, present a “permission denied” message.
+     - i. If the OTP is valid, greet the user by name and present a success message.
+     - ii. If the OTP is invalid, present a “permission denied” message.
     - b. Note that you will have to build your own API to capture and validate the OTP. Its design and implementation is left up to you.
