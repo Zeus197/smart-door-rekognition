@@ -15,8 +15,8 @@ Name: Tanya Shah, Rutwik Chinchole, Ishan Tickoo, Sai Likhith Kanuparthi
 NetID: tsah20, ruc197, it732, slk522
 
 **S3 Bucket link:** 
-http://smartdoor-asg2.s3-website-us-east-1.amazonaws.com/index.html?fileName=frame_5c89c5c6-29fe-11eb-bc75-8671d7826d76.jpeg
-https://smartdoor-asg2.s3.amazonaws.com/virtualdoor.html
+* http://smartdoor-asg2.s3-website-us-east-1.amazonaws.com/index.html?fileName=frame_5c89c5c6-29fe-11eb-bc75-8671d7826d76.jpeg
+* https://smartdoor-asg2.s3.amazonaws.com/virtualdoor.html
 
 **GitHub Release:** 
 18th Nov 2020
@@ -38,7 +38,8 @@ https://smartdoor-asg2.s3.amazonaws.com/virtualdoor.html
     c. Create a DynamoDB table “visitors” (DB2) that stores details about the visitors that your Smart Door system is interacting with.
         i. Index each visitor by the FaceId detected by Amazon Rekognition2 (more in the next section), alongside the name of the visitor and their phone number.            When storing a new face, if the FaceId returned by Rekognition already exists in the database, append the new photo to the existing photos array.
            Use the following schema for the JSON object:
-            {
+              {
+            
                 “faceId”: “{UUID}”,
                 “name”: “Jane Doe”,
                 1 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
