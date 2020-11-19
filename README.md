@@ -5,7 +5,7 @@ This smart recognizes new visitors and send OTP registration link in emails to t
 
 # Architecture
 
-![architecture](https://github.com/sailikhithk/smart-door-rekognition/blob/main/images/Screenshot%20from%202020-11-18%2019-16-11.png)
+![architecture](https://github.com/sailikhithk/smart-door-rekognition/blob/main/images/Smartdoor_Architecture.png)
 
 **Smart Door Rekognition System**
 
