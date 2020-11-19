@@ -1,11 +1,11 @@
 # smart-door-rekognition
 This smart recognizes new visitors and send OTP registration link in emails to the visitors. Returning visitors get direct OTP.
 
-![Demo](https://github.com/sailikhithk/smart-door-rekognition/blob/main/frontend/opendoor.png)
+<img src="https://github.com/sailikhithk/smart-door-rekognition/blob/main/frontend/opendoor.png width="240" height="320"/>
 
 # Architecture
 
-![architecture](https://github.com/sailikhithk/smart-door-rekognition/blob/main/images/Smartdoor_Architecture.png)
+<img src="https://github.com/sailikhithk/smart-door-rekognition/blob/main/images/Smartdoor_Architecture.png" width="640" height="480"/>
 
 **Smart Door Rekognition System**
 
